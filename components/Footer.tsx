@@ -1,9 +1,9 @@
 import Reveal from "./Reveal";
 
 const LINKS = [
-  { label: "Email", value: "your.email@example.com", href: "mailto:your.email@example.com" },
-  { label: "LinkedIn", value: "linkedin.com/in/your-name", href: "https://linkedin.com/in/your-name" },
-  { label: "GitHub", value: "github.com/your-username", href: "https://github.com/your-username" },
+  { label: "Email", value: "shayanshabbirssj@gmail.com", href: "mailto:shayanshabbirssj@gmail.com" },
+  { label: "LinkedIn", value: "linkedin.com/in/shayan-shabbir-analyst", href: "https://www.linkedin.com/in/shayan-shabbir-analyst/" },
+  { label: "GitHub", value: "github.com/Shayan-codes", href: "https://github.com/Shayan-codes" },
 ];
 
 export default function Footer() {
@@ -56,8 +56,8 @@ export default function Footer() {
 
         <Reveal delay={220}>
           <p className="mt-16 font-mono text-[11px] text-faint">
-            © {new Date().getFullYear()} Shayan. Built with Next.js, deployed
-            on Vercel.
+            © {new Date().getFullYear()} Shayan Shabbir. Built with Next.js,
+            deployed on Vercel.
           </p>
         </Reveal>
       </div>

@@ -1,6 +1,25 @@
 import Reveal from "./Reveal";
+import {
+  Database,
+  Sigma,
+  Calculator,
+  TrendingUp,
+  Brain,
+  Scale,
+  Table2,
+  BarChart3,
+  PieChart,
+  type LucideIcon,
+} from "lucide-react";
+import { SiPython, SiPandas, SiScikitlearn, SiGit } from "react-icons/si";
+import type { IconType } from "react-icons";
 
-type Skill = { name: string; level: number };
+type Skill = {
+  name: string;
+  level: number;
+  icon: LucideIcon | IconType;
+  color: string;
+};
 type Category = { title: string; id: string; skills: Skill[] };
 
 const CATEGORIES: Category[] = [
@@ -8,31 +27,46 @@ const CATEGORIES: Category[] = [
     title: "Data & ML",
     id: "DAT",
     skills: [
-      { name: "Python", level: 3 },
-      { name: "SQL", level: 3 },
-      { name: "Pandas / NumPy", level: 3 },
-      { name: "Machine Learning (sklearn)", level: 2 },
-      { name: "Statistics", level: 3 },
+      { name: "Python", level: 3, icon: SiPython, color: "#4B9FE1" },
+      { name: "SQL", level: 3, icon: Database, color: "#4FC3E0" },
+      { name: "Pandas / NumPy", level: 3, icon: SiPandas, color: "#9D8DF1" },
+      {
+        name: "Machine Learning (sklearn)",
+        level: 2,
+        icon: SiScikitlearn,
+        color: "#F7931E",
+      },
+      { name: "Statistics", level: 3, icon: Sigma, color: "#7DD3FC" },
     ],
   },
   {
     title: "FinTech & Markets",
     id: "FIN",
     skills: [
-      { name: "Financial Modeling", level: 4 },
-      { name: "Equity & FX Markets", level: 3 },
-      { name: "Behavioral Finance", level: 4 },
-      { name: "Valuation", level: 3 },
+      {
+        name: "Financial Modeling",
+        level: 4,
+        icon: Calculator,
+        color: "#F0B429",
+      },
+      {
+        name: "Equity & FX Markets",
+        level: 3,
+        icon: TrendingUp,
+        color: "#34D399",
+      },
+      { name: "Behavioral Finance", level: 4, icon: Brain, color: "#C084FC" },
+      { name: "Valuation", level: 3, icon: Scale, color: "#60A5FA" },
     ],
   },
   {
     title: "Tools & Platforms",
     id: "TLS",
     skills: [
-      { name: "Excel", level: 4 },
-      { name: "Power BI", level: 3 },
-      { name: "Tableau", level: 2 },
-      { name: "Git", level: 2 },
+      { name: "Excel", level: 4, icon: Table2, color: "#217346" },
+      { name: "Power BI", level: 3, icon: BarChart3, color: "#F2C811" },
+      { name: "Tableau", level: 2, icon: PieChart, color: "#E97627" },
+      { name: "Git", level: 2, icon: SiGit, color: "#F05032" },
     ],
   },
 ];
@@ -43,9 +77,7 @@ function Bars({ level }: { level: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <span
           key={i}
-          className={`w-[5px] ${
-            i < level ? "bg-mint" : "bg-line"
-          }`}
+          className={`w-[5px] ${i < level ? "bg-mint" : "bg-line"}`}
           style={{ height: `${6 + i * 3}px` }}
         />
       ))}
@@ -81,15 +113,25 @@ export default function Skills() {
                   </span>
                 </div>
                 <ul className="divide-y divide-line">
-                  {cat.skills.map((s) => (
-                    <li
-                      key={s.name}
-                      className="flex items-center justify-between gap-4 px-4 py-3.5"
-                    >
-                      <span className="text-sm text-muted">{s.name}</span>
-                      <Bars level={s.level} />
-                    </li>
-                  ))}
+                  {cat.skills.map((s) => {
+                    const Icon = s.icon;
+                    return (
+                      <li
+                        key={s.name}
+                        className="flex items-center justify-between gap-4 px-4 py-3.5"
+                      >
+                        <span className="flex items-center gap-2.5 text-sm text-muted">
+                          <Icon
+                            size={16}
+                            color={s.color}
+                            className="shrink-0"
+                          />
+                          {s.name}
+                        </span>
+                        <Bars level={s.level} />
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </Reveal>

@@ -21,9 +21,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shayan — FinTech & Data Analytics",
+  title: "Shayan Shabbir — FinTech & Data Analytics",
   description:
-    "Portfolio of Shayan, a FinTech student building toward a career in data analytics and data science.",
+    "Portfolio of Shayan Shabbir, a FinTech student building toward a career in data analytics and data science.",
 };
 
 export default function RootLayout({
